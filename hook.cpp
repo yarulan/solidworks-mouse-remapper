@@ -10,13 +10,17 @@ LRESULT CALLBACK MouseProc(int nCode, WPARAM wParam, LPARAM lParam) {
 		goto exit;
 	}
 
-
-	if (!state->handles(wParam)) {
-		goto exit;
+	Result result = state->handle(wParam);
+	
+	for (int i = 0; i < result.numberOfInputs; i++) {
+		queueInput(result.inputs[i]);
 	}
 	
-	State* nextState = state->handle(wParam);
-	state = nextState;
+	state = result.nextState;
+
+	if (result.skip) {
+		goto exit;
+	}
 
 	return 1;
 

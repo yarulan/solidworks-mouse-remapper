@@ -2,38 +2,28 @@
 
 #include <windows.h>
 #include "hook.h"
-
-class State;
-
-struct HandleResult {
-	bool shouldSkip;
-	State* nextState;
-};
+#include "input.h"
+#include "result.h"
 
 class State {
 public:
-	virtual bool handles(WPARAM wParam) = 0;
-	virtual State* handle(WPARAM wParam) = 0;
+	virtual Result handle(WPARAM wParam) = 0;
 };
 
 class WaitingState : public State {
-	bool handles(WPARAM wParam);
-	State* handle(WPARAM wParam);
+	Result handle(WPARAM wParam);
 };
 
 class PanningState : public State {
-	bool handles(WPARAM wParam);
-	State* handle(WPARAM wParam);
+	Result handle(WPARAM wParam);
 };
 
 class RotationWaitingState : public State {
-	bool handles(WPARAM wParam);
-	State* handle(WPARAM wParam);
+	Result handle(WPARAM wParam);
 };
 
 class RotatingState : public State {
-	bool handles(WPARAM wParam);
-	State* handle(WPARAM wParam);
+	Result handle(WPARAM wParam);
 };
 
 extern WaitingState waitingState;
@@ -42,3 +32,5 @@ extern RotationWaitingState rotationWaitingState;
 extern RotatingState rotatingState;
 
 extern State* state;
+
+bool solidWorksWindowActive();

@@ -2,4 +2,4 @@
 
 project ("CMakeProject1")
 
-add_executable (CMakeProject1 WIN32 "main.cpp"  "hook.cpp" "hook.h" "state.cpp" "state.h" "input.h" "input.cpp")
+add_executable (CMakeProject1 WIN32 "main.cpp"  "hook.cpp" "hook.h" "state.cpp" "state.h" "input.h" "input.cpp"  "waiting.cpp" "panning.cpp" "rotating.cpp" "result.h" "result.cpp")

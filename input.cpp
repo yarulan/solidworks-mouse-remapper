@@ -4,6 +4,13 @@ std::queue<INPUT> inputQueue;
 std::mutex queueMutex;
 bool exitThread = false;
 
+INPUT middleDown = mkMouseInput(MOUSEEVENTF_MIDDLEDOWN);
+INPUT rightDown = mkMouseInput(MOUSEEVENTF_RIGHTDOWN);
+INPUT rightUp = mkMouseInput(MOUSEEVENTF_RIGHTUP);
+INPUT controlDown = mkKeyDown(VK_LCONTROL);
+INPUT middleUp = mkMouseInput(MOUSEEVENTF_MIDDLEUP);
+INPUT controlUp = mkKeyUp(VK_LCONTROL);
+
 void queueInput(INPUT input) {
 	queueInput(&input, 1);
 }
